@@ -11,7 +11,7 @@ reference data through one API.
 [![CI](https://github.com/cotizave/cotizave-typescript/actions/workflows/ci.yml/badge.svg)](https://github.com/cotizave/cotizave-typescript/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/cotizave/cotizave-typescript/blob/master/LICENSE)
 
-[API & docs hub](https://github.com/cotizave/exchange-rates-api) · [Documentation](https://docs.cotizave.com) · [API reference](https://docs.cotizave.com/api/v2/introduction) · [Dashboard](https://app.cotizave.com) · [Website](https://cotizave.com)
+[API & docs hub](https://github.com/cotizave/exchange-rates-api) · [Documentation](https://docs.cotizave.com) · [API reference](https://docs.cotizave.com/api/v2/introduction) · [Dashboard](https://app.cotizave.com) · [Website](https://global.cotizave.com)
 
 </div>
 
