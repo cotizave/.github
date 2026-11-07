@@ -34,6 +34,7 @@ billing, analytics, remittances and reporting on top of it.
 | [**Exchange Rates API**](https://github.com/cotizave/exchange-rates-api) | The hub: quick start, endpoints, the OpenAPI spec and a Postman collection. **Start here.** | [Browse →](https://github.com/cotizave/exchange-rates-api) |
 | [**TypeScript / JavaScript SDK**](https://github.com/cotizave/cotizave-typescript) | Fully-typed client for the API v2. ESM + CommonJS, Node.js 22+. | `npm i @cotizave/sdk` |
 | [**Python SDK**](https://github.com/cotizave/cotizave-python) | Fully-typed client for the API v2. Python 3.10+. | `pip install cotizave` |
+| [**PHP SDK**](https://github.com/cotizave/cotizave-php) | Fully-typed client for the API v2. PHP 8.3+, PSR-18. | `composer require cotizave/sdk` |
 | [**Agent Skill**](https://github.com/cotizave/agent-skills) | Guides AI coding agents (Claude, Cursor, Codex) to integrate Cotizave correctly. | `npx skills add cotizave/agent-skills` |
 
 Additional language SDKs are planned; this list shows what is available today.
