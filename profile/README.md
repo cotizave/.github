@@ -1,10 +1,5 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/cotizave/.github/main/profile/mark-dark.svg" />
-  <img src="https://raw.githubusercontent.com/cotizave/.github/main/profile/mark.svg" width="76" height="76" alt="Cotizave" />
-</picture>
-
 # Cotizave
 
 ### Exchange-Rate Data Infrastructure
