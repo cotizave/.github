@@ -1,31 +1,58 @@
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/cotizave/.github/main/profile/cotizave-mark.svg" width="72" height="72" alt="Cotizave" />
+
 # Cotizave
 
-### Exchange-rate data for developers and businesses
+### Exchange-Rate Data Infrastructure
 
-Multi-country currency references, conversions, historical series, bank rates and
-calendars — across the Americas and Europe, behind a single API key.
+Build with multi-country exchange rates, currency conversions and financial
+reference data through one API.
 
-[![Docs](https://img.shields.io/badge/docs-docs.cotizave.com-2563eb)](https://docs.cotizave.com)
-[![Website](https://img.shields.io/badge/web-cotizave.com-0ea5e9)](https://cotizave.com)
-[![API v2](https://img.shields.io/badge/API-v2-16a34a)](https://docs.cotizave.com/api/v2/introduction)
+[![npm](https://img.shields.io/npm/v/@cotizave/sdk?label=%40cotizave%2Fsdk&color=cb3837&logo=npm)](https://www.npmjs.com/package/@cotizave/sdk)
+[![CI](https://github.com/cotizave/cotizave-typescript/actions/workflows/ci.yml/badge.svg)](https://github.com/cotizave/cotizave-typescript/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/cotizave/cotizave-typescript/blob/master/LICENSE)
 
-[**Documentation**](https://docs.cotizave.com) · [**API reference**](https://docs.cotizave.com/api/v2/introduction) · [**Get an API key**](https://cotizave.com)
+[Documentation](https://docs.cotizave.com) · [API reference](https://docs.cotizave.com/api/v2/introduction) · [Dashboard](https://app.cotizave.com) · [Website](https://cotizave.com)
 
 </div>
 
 ---
 
-## 🧰 Official tools
+## What is Cotizave
 
-| | Tool | What it is | Install |
-| :-: | --- | --- | --- |
-| 🟦 | [**TypeScript SDK**](https://github.com/cotizave/cotizave-typescript) <br/> [![npm](https://img.shields.io/npm/v/@cotizave/sdk?color=cb3837&logo=npm)](https://www.npmjs.com/package/@cotizave/sdk) [![CI](https://github.com/cotizave/cotizave-typescript/actions/workflows/ci.yml/badge.svg)](https://github.com/cotizave/cotizave-typescript/actions/workflows/ci.yml) | Fully-typed client for the Cotizave API v2 — rates, conversions, history, markets and calendars. Zero config beyond your API key. | `npm i @cotizave/sdk` |
-| 🤖 | [**Agent Skill**](https://github.com/cotizave/agent-skills) | Official skill that teaches a coding agent (Claude, Cursor, Codex…) to integrate Cotizave correctly — the right rate IDs, server-side keys, plan-aware fields. | `npx skills add cotizave/agent-skills` |
-| 📮 | [**Postman collection**](https://docs.cotizave.com) | Every v2 endpoint, ready to try from Postman. | [Open in docs](https://docs.cotizave.com) |
+Cotizave is a data platform that gives developers and businesses exchange-rate and
+financial reference data through a single, typed API. Official and market rates,
+conversions, historical series, bank information and calendars — for applications
+across the Americas and Europe — behind one API key.
 
-## ⚡ Quick start
+It is infrastructure, not a widget: you integrate it server-side and build pricing,
+billing, analytics, remittances and reporting on top of it.
+
+## Platform capabilities
+
+| Capability | What it provides |
+| --- | --- |
+| **Exchange rates** | Official and market references per country, by canonical rate id. |
+| **Currency conversion** | Single and bulk conversions, resolved on Cotizave — never computed client-side. |
+| **History & statistics** | Point-in-time, daily series, raw captures, and period aggregates. |
+| **Markets & banks** | Rate catalogs, spreads, best-route lookups and bank-published rates. |
+| **Calendars** | Holidays and business-day math per country. |
+| **Reference data** | Country, currency and issuer catalogs. |
+
+> Coverage and available features vary by country and by plan.
+
+## Developer tools
+
+| Tool | Description | Install |
+| --- | --- | --- |
+| [**TypeScript SDK**](https://github.com/cotizave/cotizave-typescript) | Fully-typed client for the Cotizave API v2, generated from the OpenAPI contract. ESM + CommonJS, Node.js 22+. | `npm i @cotizave/sdk` |
+| [**Agent Skill**](https://github.com/cotizave/agent-skills) | Official skill that guides AI coding agents (Claude, Cursor, Codex) to integrate Cotizave correctly. | `npx skills add cotizave/agent-skills` |
+
+Additional language SDKs and integrations are planned; this list shows what is
+available today.
+
+## Quick start
 
 ```ts
 import { Cotizave } from '@cotizave/sdk';
@@ -35,10 +62,13 @@ const client = new Cotizave({ apiKey: process.env.COTIZAVE_API_KEY! });
 // Live rates for a country
 const { rates } = await client.rates.list('AR');
 
-// A conversion — the math runs on Cotizave, not in your code
-const conversion = await client.convert({ from: 'USD', to: 'BRL', amount: 100 });
+// A single rate by its canonical id
+const trm = await client.rates.get('CO', 'co-trm');
 
-// Historical series
+// A conversion — the arithmetic runs on Cotizave
+const { to } = await client.convert({ from: 'USD', to: 'BRL', amount: 100 });
+
+// A daily historical series
 const series = await client.history.daily({
   country: 'CO',
   rateId: 'co-trm',
@@ -47,20 +77,37 @@ const series = await client.history.daily({
 });
 ```
 
-Grab a free API key at [cotizave.com](https://cotizave.com) and keep it server-side.
+Create a free API key in the [dashboard](https://app.cotizave.com) and keep it
+server-side.
 
-## ✨ Why Cotizave
+## Documentation & resources
 
-- 🌎 **Multi-country** — official and market rates across the Americas and Europe, one API.
-- 🧩 **Typed & generated** — SDKs built from the OpenAPI v2 contract, so they never drift.
-- 🔐 **Secure by design** — server-side keys, no money math on the client, rate-limit aware.
-- 🤝 **Agent-ready** — a first-class skill so AI coding agents integrate it the right way.
+- **[Documentation](https://docs.cotizave.com)** — guides, reference and quick start
+- **[API v2 reference](https://docs.cotizave.com/api/v2/introduction)** — endpoints and responses
+- **[Postman collection](https://docs.cotizave.com)** — try every endpoint
+- **[Dashboard](https://app.cotizave.com)** — manage API keys and usage
 
-## 📚 Learn more
+## Security & responsible usage
 
-**[Documentation](https://docs.cotizave.com)** — **[API v2 reference](https://docs.cotizave.com/api/v2/introduction)** — **[Website](https://cotizave.com)**
+Cotizave is designed for server-side use. Keep your API key in a server
+environment variable and never ship it in a browser bundle or public client. The
+SDKs send the key only as a request header, enforce HTTPS, and keep money
+arithmetic on the server.
 
-<!--
-  This page lives in cotizave/.github → profile/README.md.
-  Add rows to "Official tools" as more ship (MCP server, Python/Go SDKs, data feeds).
--->
+Found a security issue? See the SDK's
+[security policy](https://github.com/cotizave/cotizave-typescript/blob/master/SECURITY.md)
+for private reporting.
+
+## Community & contributions
+
+- Report bugs or request features in each repository's **Issues**.
+- The TypeScript SDK is open source (MIT); see its
+  [contributing guide](https://github.com/cotizave/cotizave-typescript/blob/master/CONTRIBUTING.md).
+
+---
+
+<div align="center">
+
+**[Get started →](https://docs.cotizave.com)**
+
+</div>
